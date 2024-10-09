@@ -1,4 +1,4 @@
-package org.uma.ed.datastructure.queue;
+package org.uma.ed.dataestructure.queue;
 
 /**
  * This interface represents a Queue, a First In First Out (FIFO) data

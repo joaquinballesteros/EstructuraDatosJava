@@ -1,4 +1,4 @@
-package org.uma.ed.datastructure.queue;
+package org.uma.ed.dataestructure.queue;
 
 /**
  * This class represents a Queue data structure implemented using an array of

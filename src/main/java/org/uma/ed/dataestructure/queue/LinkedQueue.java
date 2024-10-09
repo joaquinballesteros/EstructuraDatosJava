@@ -1,8 +1,10 @@
-package org.uma.ed.datastructure.queue;
+package org.uma.ed.dataestructure.queue;
 
 /**
- * This class represents a Queue data structure implemented using a linked structure of nodes.
- * Each node in the structure contains a reference to the next node and an element of type T.
+ * This class represents a Queue data structure implemented using a linked
+ * structure of nodes.
+ * Each node in the structure contains a reference to the next node and an
+ * element of type T.
  * The structure maintains references to first and last nodes in queue.
  **
  * @param <T> Type of elements in queue.
@@ -11,7 +13,9 @@ package org.uma.ed.datastructure.queue;
  */
 public class LinkedQueue<T> extends AbstractQueue<T> implements Queue<T> {
   /**
-   * This class represents a node in a linked structure. Each node contains an element and a reference to the next node.
+   * This class represents a node in a linked structure. Each node contains an
+   * element and a reference to the next node.
+   * 
    * @param <E> Type of elements in node.
    */
   private static final class Node<E> {
@@ -38,14 +42,17 @@ public class LinkedQueue<T> extends AbstractQueue<T> implements Queue<T> {
   /*
    * INVARIANT:
    * - if queue is empty, `first` and `last` are null.
-   * - if queue is not empty, `first` references first node in queue and `last` references last node in queue.
-   * - each node in queue contains a reference to next node or null if it is the last node.
+   * - if queue is not empty, `first` references first node in queue and `last`
+   * references last node in queue.
+   * - each node in queue contains a reference to next node or null if it is the
+   * last node.
    * - `size` is number of elements in queue.
    */
 
   /**
    * Creates an empty LinkedQueue.
-   * <p> Time complexity: O(1)
+   * <p>
+   * Time complexity: O(1)
    */
   public LinkedQueue() {
     first = null;
@@ -55,7 +62,8 @@ public class LinkedQueue<T> extends AbstractQueue<T> implements Queue<T> {
 
   /**
    * Creates an empty LinkedQueue.
-   * <p> Time complexity: O(1)
+   * <p>
+   * Time complexity: O(1)
    */
   public static <T> LinkedQueue<T> empty() {
     return new LinkedQueue<>();
@@ -63,10 +71,11 @@ public class LinkedQueue<T> extends AbstractQueue<T> implements Queue<T> {
 
   /**
    * Creates a LinkedQueue with given elements.
-   * <p> Time complexity: O(n)
+   * <p>
+   * Time complexity: O(n)
    *
    * @param elements elements to be added to queue.
-   * @param <T> Type of elements in queue.
+   * @param <T>      Type of elements in queue.
    *
    * @return a LinkedQueue with given elements.
    */
@@ -81,10 +90,11 @@ public class LinkedQueue<T> extends AbstractQueue<T> implements Queue<T> {
 
   /**
    * Creates a LinkedQueue with elements in given iterable.
-   * <p> Time complexity: O(n)
+   * <p>
+   * Time complexity: O(n)
    *
    * @param iterable {@code Iterable} of elements to be added to queue.
-   * @param <T> Type of elements in iterable.
+   * @param <T>      Type of elements in iterable.
    *
    * @return a LinkedQueue with elements in given iterable.
    */
@@ -98,7 +108,8 @@ public class LinkedQueue<T> extends AbstractQueue<T> implements Queue<T> {
 
   /**
    * Returns a new LinkedQueue with same elements in same order as argument.
-   * <p> Time complexity: O(n)
+   * <p>
+   * Time complexity: O(n)
    *
    * @param that LinkedQueue to be copied.
    *
@@ -110,7 +121,8 @@ public class LinkedQueue<T> extends AbstractQueue<T> implements Queue<T> {
 
   /**
    * Returns a new LinkedQueue with same elements in same order as argument.
-   * <p> Time complexity: O(n)
+   * <p>
+   * Time complexity: O(n)
    *
    * @param that Queue to be copied.
    *
@@ -122,7 +134,8 @@ public class LinkedQueue<T> extends AbstractQueue<T> implements Queue<T> {
 
   /**
    * {@inheritDoc}
-   * <p> Time complexity: O(1)
+   * <p>
+   * Time complexity: O(1)
    */
   @Override
   public boolean isEmpty() {
@@ -131,7 +144,8 @@ public class LinkedQueue<T> extends AbstractQueue<T> implements Queue<T> {
 
   /**
    * {@inheritDoc}
-   * <p> Time complexity: O(1)
+   * <p>
+   * Time complexity: O(1)
    */
   @Override
   public int size() {
@@ -140,7 +154,8 @@ public class LinkedQueue<T> extends AbstractQueue<T> implements Queue<T> {
 
   /**
    * {@inheritDoc}
-   * <p> Time complexity: O(1)
+   * <p>
+   * Time complexity: O(1)
    */
   @Override
   public void enqueue(T element) {
@@ -149,7 +164,8 @@ public class LinkedQueue<T> extends AbstractQueue<T> implements Queue<T> {
 
   /**
    * {@inheritDoc}
-   * <p> Time complexity: O(1)
+   * <p>
+   * Time complexity: O(1)
    *
    * @throws EmptyQueueException {@inheritDoc}
    */
@@ -160,7 +176,8 @@ public class LinkedQueue<T> extends AbstractQueue<T> implements Queue<T> {
 
   /**
    * {@inheritDoc}
-   * <p> Time complexity: O(1)
+   * <p>
+   * Time complexity: O(1)
    *
    * @throws EmptyQueueException {@inheritDoc}
    */
@@ -171,7 +188,8 @@ public class LinkedQueue<T> extends AbstractQueue<T> implements Queue<T> {
 
   /**
    * {@inheritDoc}
-   * <p> Time complexity: O(1)
+   * <p>
+   * Time complexity: O(1)
    */
   @Override
   public void clear() {

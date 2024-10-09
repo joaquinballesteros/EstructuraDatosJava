@@ -1,4 +1,4 @@
-package org.uma.ed.datastructure.queue;
+package org.uma.ed.dataestructure.queue;
 
 import java.io.Serial;
 
