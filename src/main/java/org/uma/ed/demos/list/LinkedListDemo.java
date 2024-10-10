@@ -8,9 +8,9 @@ import org.uma.ed.dataestructure.list.List;
  *
  * @author Pepe Gallardo, Data Structures, Grado en Informática. UMA.
  */
-public class ArrayListDemo {
+public class LinkedListDemo {
   public static void main(String[] args) {
-    List<Integer> list1 = org.uma.ed.dataestructure.list.ArrayList.empty();
+    List<Integer> list1 = LinkedList.empty();
     list1.append(1);
     list1.append(2);
     list1.prepend(3);

@@ -1,4 +1,4 @@
-package org.uma.ed.datastructures.list;
+package org.uma.ed.dataestructure.list;
 
 import java.util.Iterator;
 import java.util.NoSuchElementException;
@@ -27,7 +27,7 @@ public class LinkedList<T> extends AbstractList<T> implements List<T> {
   }
 
   /**
-   * Reference to nodes with first and last elements in list.
+   * References to nodes with first and last elements in list.
    */
   private Node<T> first, last;
 
@@ -116,34 +116,7 @@ public class LinkedList<T> extends AbstractList<T> implements List<T> {
    * @return a new LinkedList with same elements and order as {@code that}.
    */
   public static <T> LinkedList<T> copyOf(List<T> that) {
-    int size = that.size();
-    LinkedList<T> copy = LinkedList.empty();
-    if (size > 0) {
-      Iterator<T> iterator = that.iterator();
-      // copy first node
-      Node<T> last = new Node<>(iterator.next(), null);
-      copy.first = last;
-
-      // copy rest of nodes
-      while (iterator.hasNext()) {
-        last.next = new Node<>(iterator.next(), null);
-        last = last.next;
-      }
-      copy.last = last;
-      copy.size = size;
-    }
-    return copy;
-  }
-
-  /**
-   * Removes all elements from this LinkedList
-   * <p> Time complexity: O(1)
-   */
-  @Override
-  public void clear() {
-    first = null;
-    last = null;
-    size = 0;
+    throw new UnsupportedOperationException("Not implemented yet");
   }
 
   /**
@@ -152,7 +125,7 @@ public class LinkedList<T> extends AbstractList<T> implements List<T> {
    */
   @Override
   public boolean isEmpty() {
-    return size == 0;
+    throw new UnsupportedOperationException("Not implemented yet");
   }
 
   /**
@@ -161,7 +134,7 @@ public class LinkedList<T> extends AbstractList<T> implements List<T> {
    */
   @Override
   public int size() {
-    return size;
+    throw new UnsupportedOperationException("Not implemented yet");
   }
 
   /**
@@ -173,56 +146,6 @@ public class LinkedList<T> extends AbstractList<T> implements List<T> {
     if (index < 0 || index >= size) {
       throw new ListException("Invalid index " + index);
     }
-  }
-
-  /**
-   * {@inheritDoc}
-   * <p> Time complexity: O(n)
-   *
-   * @throws ListException {@inheritDoc}
-   */
-  @Override
-  public void insert(int index, T element) {
-    if (index == size) { // insertion after last element
-      Node<T> node = new Node<>(element, null);
-      if (first == null) { // list was empty
-        first = node;
-      } else {
-        last.next = node;
-      }
-      last = node;
-    } else if (index == 0) { // insertion at head and list was not empty
-      first = new Node<>(element, first);
-    } else { // internal insertion
-      validateIndex(index);
-      Node<T> previous = atIndex(index - 1);
-      previous.next = new Node<>(element, previous.next);
-    }
-    size++;
-  }
-
-  /**
-   * {@inheritDoc}
-   * <p> Time complexity: O(n)
-   *
-   * @throws ListException {@inheritDoc}
-   */
-  @Override
-  public void delete(int index) {
-    validateIndex(index);
-    if (index == 0) { // removing first element
-      first = first.next;
-      if (first == null) { // was also last element
-        last = null;
-      }
-    } else {
-      Node<T> previous = atIndex(index - 1);
-      previous.next = previous.next.next;
-      if (index == (size - 1)) { // was last element
-        last = previous;
-      }
-    }
-    size--;
   }
 
   /**
@@ -252,8 +175,7 @@ public class LinkedList<T> extends AbstractList<T> implements List<T> {
    */
   @Override
   public T get(int index) {
-    validateIndex(index);
-    return atIndex(index).element;
+    throw new UnsupportedOperationException("Not implemented yet");
   }
 
   /**
@@ -264,8 +186,7 @@ public class LinkedList<T> extends AbstractList<T> implements List<T> {
    */
   @Override
   public void set(int index, T element) {
-    validateIndex(index);
-    atIndex(index).element = element;
+    throw new UnsupportedOperationException("Not implemented yet");
   }
 
   /**
@@ -274,14 +195,7 @@ public class LinkedList<T> extends AbstractList<T> implements List<T> {
    */
   @Override
   public void append(T element) {
-    Node<T> node = new Node<>(element, null);
-    if (size == 0) { // list was empty
-      first = node;
-    } else {
-      last.next = node;
-    }
-    last = node;
-    size++;
+    throw new UnsupportedOperationException("Not implemented yet");
   }
 
   /**
@@ -290,11 +204,38 @@ public class LinkedList<T> extends AbstractList<T> implements List<T> {
    */
   @Override
   public void prepend(T element) {
-    first = new Node<>(element, first);
-    if (size == 0) {
-      last = first;
-    }
-    size++;
+    throw new UnsupportedOperationException("Not implemented yet");
+  }
+
+  /**
+   * {@inheritDoc}
+   * <p> Time complexity: O(n)
+   *
+   * @throws ListException {@inheritDoc}
+   */
+  @Override
+  public void insert(int index, T element) {
+    throw new UnsupportedOperationException("Not implemented yet");
+  }
+
+  /**
+   * {@inheritDoc}
+   * <p> Time complexity: O(n)
+   *
+   * @throws ListException {@inheritDoc}
+   */
+  @Override
+  public void delete(int index) {
+    throw new UnsupportedOperationException("Not implemented yet");
+  }
+
+  /**
+   * Removes all elements from this LinkedList
+   * <p> Time complexity: O(1)
+   */
+  @Override
+  public void clear() {
+    throw new UnsupportedOperationException("Not implemented yet");
   }
 
   /**

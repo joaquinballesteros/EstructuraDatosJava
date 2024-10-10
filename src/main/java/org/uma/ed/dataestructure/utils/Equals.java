@@ -1,4 +1,4 @@
-package org.uma.ed.datastructures.utils.equals;
+package org.uma.ed.dataestructure.utils;
 
 import java.util.HashMap;
 import java.util.Map;

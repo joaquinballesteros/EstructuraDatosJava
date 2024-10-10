@@ -1,4 +1,4 @@
-package org.uma.ed.datastructures.list;
+package org.uma.ed.dataestructure.list;
 
 import java.util.Arrays;
 import java.util.Iterator;
@@ -135,14 +135,7 @@ public class ArrayList<T> extends AbstractList<T> implements List<T> {
    * @return a new ArrayList with same elements and order as {@code that}.
    */
   public static <T> ArrayList<T> copyOf(ArrayList<T> that) {
-    int size = that.size();
-    ArrayList<T> copy = ArrayList.withCapacity(that.elements.length);
-    if (size > 0) {
-      // copy elements
-      System.arraycopy(that.elements, 0, copy.elements, 0, size);
-      copy.size = size; // set size
-    }
-    return copy;
+    throw new UnsupportedOperationException("Not implemented yet");
   }
 
   /**
@@ -154,34 +147,7 @@ public class ArrayList<T> extends AbstractList<T> implements List<T> {
    * @return a new ArrayList with same elements and order as {@code that}.
    */
   public static <T> ArrayList<T> copyOf(List<T> that) {
-    if (that instanceof ArrayList<T> arrayList) {
-      // use specialized version for ArrayList
-      return copyOf(arrayList);
-    }
-    int size = that.size();
-    ArrayList<T> copy = new ArrayList<>(size);
-    if (size > 0) {
-      // copy elements
-      int i = 0;
-      for (T element : that) {
-        copy.elements[i] = element;
-        i++;
-      }
-      copy.size = size; // set size
-    }
-    return copy;
-  }
-
-  /**
-   * Removes all elements from list
-   * <p> Time complexity: O(n)
-   */
-  @Override
-  public void clear() {
-    for (int i = 0; i < size; i++) {
-      elements[i] = null; // let GC (Garbage Collector) reclaim memory
-    }
-    size = 0;
+    throw new UnsupportedOperationException("Not implemented yet");
   }
 
   /**
@@ -190,7 +156,7 @@ public class ArrayList<T> extends AbstractList<T> implements List<T> {
    */
   @Override
   public boolean isEmpty() {
-    return size() == 0;
+    throw new UnsupportedOperationException("Not implemented yet");
   }
 
   /**
@@ -199,7 +165,7 @@ public class ArrayList<T> extends AbstractList<T> implements List<T> {
    */
   @Override
   public int size() {
-    return size;
+    throw new UnsupportedOperationException("Not implemented yet");
   }
 
   /**
@@ -225,48 +191,13 @@ public class ArrayList<T> extends AbstractList<T> implements List<T> {
 
   /**
    * {@inheritDoc}
-   * <p> Time complexity: O(n)
-   *
-   * @throws ListException {@inheritDoc}
-   */
-  @Override
-  public void insert(int index, T element) {
-    ensureCapacity();
-    if (index != size) {
-      validateIndex(index);
-      for (int i = size; i > index; i--) {
-        elements[i] = elements[i - 1];
-      }
-    }
-    elements[index] = element;
-    size++;
-  }
-
-  /**
-   * {@inheritDoc}
-   * <p> Time complexity: O(n)
-   *
-   * @throws ListException {@inheritDoc}
-   */
-  @Override
-  public void delete(int index) {
-    validateIndex(index);
-    for (int i = index; i < size - 1; i++) {
-      elements[i] = elements[i + 1];
-    }
-    size--;
-  }
-
-  /**
-   * {@inheritDoc}
    * <p> Time complexity: O(1)
    *
    * @throws ListException {@inheritDoc}
    */
   @Override
   public T get(int index) {
-    validateIndex(index);
-    return elements[index];
+    throw new UnsupportedOperationException("Not implemented yet");
   }
 
   /**
@@ -277,8 +208,7 @@ public class ArrayList<T> extends AbstractList<T> implements List<T> {
    */
   @Override
   public void set(int index, T element) {
-    validateIndex(index);
-    elements[index] = element;
+    throw new UnsupportedOperationException("Not implemented yet");
   }
 
   /**
@@ -287,9 +217,7 @@ public class ArrayList<T> extends AbstractList<T> implements List<T> {
    */
   @Override
   public void append(T element) {
-    ensureCapacity();
-    elements[size] = element;
-    size++;
+    throw new UnsupportedOperationException("Not implemented yet");
   }
 
   /**
@@ -298,12 +226,38 @@ public class ArrayList<T> extends AbstractList<T> implements List<T> {
    */
   @Override
   public void prepend(T element) {
-    ensureCapacity();
-    for (int i = size; i > 0; i--) {
-      elements[i] = elements[i - 1];
-    }
-    elements[0] = element;
-    size++;
+    throw new UnsupportedOperationException("Not implemented yet");
+  }
+
+  /**
+   * {@inheritDoc}
+   * <p> Time complexity: O(n)
+   *
+   * @throws ListException {@inheritDoc}
+   */
+  @Override
+  public void insert(int index, T element) {
+    throw new UnsupportedOperationException("Not implemented yet");
+  }
+
+  /**
+   * {@inheritDoc}
+   * <p> Time complexity: O(n)
+   *
+   * @throws ListException {@inheritDoc}
+   */
+  @Override
+  public void delete(int index) {
+    throw new UnsupportedOperationException("Not implemented yet");
+  }
+
+  /**
+   * Removes all elements from list
+   * <p> Time complexity: O(n)
+   */
+  @Override
+  public void clear() {
+    throw new UnsupportedOperationException("Not implemented yet");
   }
 
   /**

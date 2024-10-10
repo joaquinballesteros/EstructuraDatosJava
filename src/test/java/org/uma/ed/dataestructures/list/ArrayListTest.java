@@ -1,118 +1,136 @@
-package org.uma.ed.dataestructures.queue;
+package org.uma.ed.dataestructures.list;
 
 import org.junit.jupiter.api.Test;
+import org.uma.ed.dataestructure.list.ArrayList;
+import org.uma.ed.dataestructure.list.List;
+import org.uma.ed.dataestructure.list.AbstractList;
 import static org.junit.jupiter.api.Assertions.*;
-import org.uma.ed.dataestructure.queue.ArrayQueue;
-import org.uma.ed.dataestructure.queue.Queue;
-import org.uma.ed.dataestructure.queue.EmptyQueueException;
 
-public class ArrayQueueTest {
+public class ArrayListTest {
 
     @Test
-    public void testEmptyQueue() {
-        ArrayQueue<Integer> queue = ArrayQueue.empty();
-        assertTrue(queue.isEmpty());
-        assertEquals(0, queue.size());
+    public void testEmptyList() {
+        List<Integer> list = new ArrayList<>();
+        assertTrue(list.isEmpty());
+        assertEquals(0, list.size());
     }
 
     @Test
-    public void testEnqueue() {
-        ArrayQueue<Integer> queue = new ArrayQueue<>();
-        queue.enqueue(1);
-        assertFalse(queue.isEmpty());
-        assertEquals(1, queue.size());
-        assertEquals(1, queue.first());
+    public void testAppend() {
+        List<Integer> list = new ArrayList<>();
+        list.append(1);
+        list.append(2);
+        list.append(3);
+        assertFalse(list.isEmpty());
+        assertEquals(3, list.size());
+        assertEquals(1, list.get(0));
+        assertEquals(2, list.get(1));
+        assertEquals(3, list.get(2));
     }
 
     @Test
-    public void testDequeue() {
-        ArrayQueue<Integer> queue = new ArrayQueue<>();
-        queue.enqueue(1);
-        queue.enqueue(2);
-        queue.dequeue();
-        assertEquals(1, queue.size());
-        assertEquals(2, queue.first());
+    public void testPrepend() {
+        List<Integer> list = new ArrayList<>();
+        list.prepend(1);
+        list.prepend(2);
+        list.prepend(3);
+        assertFalse(list.isEmpty());
+        assertEquals(3, list.size());
+        assertEquals(3, list.get(0));
+        assertEquals(2, list.get(1));
+        assertEquals(1, list.get(2));
     }
 
     @Test
-    public void testFirst() {
-        ArrayQueue<Integer> queue = new ArrayQueue<>();
-        queue.enqueue(1);
-        queue.enqueue(2);
-        assertEquals(1, queue.first());
+    public void testInsert() {
+        List<Integer> list = new ArrayList<>();
+        list.append(1);
+        list.append(3);
+        list.insert(1, 2);
+        assertEquals(3, list.size());
+        assertEquals(1, list.get(0));
+        assertEquals(2, list.get(1));
+        assertEquals(3, list.get(2));
+    }
+
+    @Test
+    public void testDelete() {
+        List<Integer> list = new ArrayList<>();
+        list.append(1);
+        list.append(2);
+        list.append(3);
+        list.delete(1);
+        assertEquals(2, list.size());
+        assertEquals(1, list.get(0));
+        assertEquals(3, list.get(1));
     }
 
     @Test
     public void testClear() {
-        ArrayQueue<Integer> queue = new ArrayQueue<>();
-        queue.enqueue(1);
-        queue.enqueue(2);
-        queue.clear();
-        assertTrue(queue.isEmpty());
-        assertEquals(0, queue.size());
+        List<Integer> list = new ArrayList<>();
+        list.append(1);
+        list.append(2);
+        list.append(3);
+        list.clear();
+        assertTrue(list.isEmpty());
+        assertEquals(0, list.size());
     }
 
     @Test
-    public void testWithCapacity() {
-        ArrayQueue<Integer> queue = ArrayQueue.withCapacity(10);
-        assertTrue(queue.isEmpty());
-        assertEquals(0, queue.size());
+    public void testSet() {
+        List<Integer> list = new ArrayList<>();
+        list.append(1);
+        list.append(2);
+        list.append(3);
+        list.set(1, 4);
+        assertEquals(3, list.size());
+        assertEquals(1, list.get(0));
+        assertEquals(4, list.get(1));
+        assertEquals(3, list.get(2));
+    }
+
+    @Test
+    public void testGet() {
+        List<Integer> list = new ArrayList<>();
+        list.append(1);
+        list.append(2);
+        list.append(3);
+        assertEquals(1, list.get(0));
+        assertEquals(2, list.get(1));
+        assertEquals(3, list.get(2));
+    }
+
+
+    @Test
+    public void testCopyOf() {
+        ArrayList<Integer> list = new ArrayList<>();
+        list.append(1);
+        list.append(2);
+        list.append(3);
+        ArrayList<Integer> copy = ArrayList.copyOf(list);
+        assertEquals(list.size(), copy.size());
+        for (int i = 0; i < list.size(); i++) {
+            assertEquals(list.get(i), copy.get(i));
+        }
+    }
+
+    @Test
+    public void testFromIterable() {
+        java.util.List<Integer> iterable = java.util.Arrays.asList(1, 2, 3);
+        ArrayList<Integer> list = ArrayList.from(iterable);
+        assertEquals(3, list.size());
+        assertEquals(1, list.get(0));
+        assertEquals(2, list.get(1));
+        assertEquals(3, list.get(2));
     }
 
     @Test
     public void testOf() {
-        ArrayQueue<Integer> queue = ArrayQueue.of(1, 2, 3);
-        assertFalse(queue.isEmpty());
-        assertEquals(3, queue.size());
-        assertEquals(1, queue.first());
+        ArrayList<Integer> list = ArrayList.of(1, 2, 3);
+        assertEquals(3, list.size());
+        assertEquals(1, list.get(0));
+        assertEquals(2, list.get(1));
+        assertEquals(3, list.get(2));
     }
 
-    @Test
-    public void testFrom() {
-        java.util.List<Integer> list = java.util.Arrays.asList(1, 2, 3);
-        ArrayQueue<Integer> queue = ArrayQueue.from(list);
-        assertFalse(queue.isEmpty());
-        assertEquals(3, queue.size());
-        assertEquals(1, queue.first());
-    }
-
-    @Test
-    public void testCopyOfArrayQueue() {
-        ArrayQueue<Integer> original = ArrayQueue.of(1, 2, 3);
-        ArrayQueue<Integer> copy = ArrayQueue.copyOf(original);
-        assertFalse(copy.isEmpty());
-        assertEquals(3, copy.size());
-        assertEquals(1, copy.first());
-    }
-
-    @Test
-    public void testCopyOfQueue() {
-        ArrayQueue<Integer> original = ArrayQueue.of(1, 2, 3);
-        ArrayQueue<Integer> copy = ArrayQueue.copyOf((Queue<Integer>) original);
-        assertFalse(copy.isEmpty());
-        assertEquals(3, copy.size());
-        assertEquals(1, copy.first());
-    }
-
-    @Test
-    public void testEnsureCapacity() {
-        ArrayQueue<Integer> queue = new ArrayQueue<>(2);
-        queue.enqueue(1);
-        queue.enqueue(2);
-        queue.enqueue(3); // This should trigger capacity increase
-        assertEquals(3, queue.size());
-        assertEquals(1, queue.first());
-    }
-
-    @Test
-    public void testDequeueEmptyQueue() {
-        ArrayQueue<Integer> queue = new ArrayQueue<>();
-        assertThrows(EmptyQueueException.class, queue::dequeue);
-    }
-
-    @Test
-    public void testFirstEmptyQueue() {
-        ArrayQueue<Integer> queue = new ArrayQueue<>();
-        assertThrows(EmptyQueueException.class, queue::first);
-    }
 }

@@ -1,4 +1,4 @@
-package org.uma.ed.datastructures.list;
+package org.uma.ed.dataestructure.list;
 
 import java.io.Serial;
 

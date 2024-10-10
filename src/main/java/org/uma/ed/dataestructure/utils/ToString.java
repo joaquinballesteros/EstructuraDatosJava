@@ -1,4 +1,4 @@
-package org.uma.ed.datastructures.utils.toString;
+package org.uma.ed.dataestructure.utils;
 
 import java.util.StringJoiner;
 

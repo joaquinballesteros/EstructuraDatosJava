@@ -1,8 +1,8 @@
-package org.uma.ed.datastructures.list;
+package org.uma.ed.dataestructure.list;
 
-import org.uma.ed.datastructures.utils.equals.Equals;
-import org.uma.ed.datastructures.utils.hashCode.HashCode;
-import org.uma.ed.datastructures.utils.toString.ToString;
+import org.uma.ed.dataestructure.utils.Equals;
+import org.uma.ed.dataestructure.utils.HashCode;
+import org.uma.ed.dataestructure.utils.ToString;
 
 /**
  * This class provides a skeletal implementation of equals, hashCode and toString methods to minimize the effort
