@@ -1,8 +1,9 @@
-package org.uma.ed.datastructures.set;
+package org.uma.ed.dataestructure.set;
 
-import org.uma.ed.datastructures.utils.equals.Equals;
-import org.uma.ed.datastructures.utils.hashCode.HashCode;
-import org.uma.ed.datastructures.utils.toString.ToString;
+import org.uma.ed.dataestructure.utils.Equals;
+import org.uma.ed.dataestructure.utils.HashCode;
+import org.uma.ed.dataestructure.utils.ToString;
+
 
 /**
  * This class provides a skeletal implementation of equals, hashCode and toString methods to minimize the effort
@@ -29,8 +30,7 @@ public abstract class AbstractSet<T> implements Iterable<T> {
    */
   @Override
   public boolean equals(Object obj) {
-    return this == obj || obj instanceof AbstractSet<?> set2 && size() == set2.size()
-        && Equals.orderIndependent(this, set2);
+    throw new UnsupportedOperationException("Not implemented yet");
   }
 
   /**
@@ -40,7 +40,7 @@ public abstract class AbstractSet<T> implements Iterable<T> {
    */
   @Override
   public int hashCode() {
-    return HashCode.orderIndependent(this);
+    throw new UnsupportedOperationException("Not implemented yet");
   }
 
   /**
@@ -48,6 +48,6 @@ public abstract class AbstractSet<T> implements Iterable<T> {
    */
   @Override
   public String toString() {
-    return ToString.toString(this);
+    throw new UnsupportedOperationException("Not implemented yet");
   }
 }

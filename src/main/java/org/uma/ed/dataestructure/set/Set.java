@@ -1,4 +1,4 @@
-package org.uma.ed.datastructures.set;
+package org.uma.ed.dataestructure.set;
 
 /**
  * This interface represents a Set, a collection of non-repeated elements.
