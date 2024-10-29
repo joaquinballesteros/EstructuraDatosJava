@@ -1,18 +1,19 @@
-package org.uma.ed.dataestructure.list;
+package org.uma.ed.dataestructure.heap;
 
+import org.uma.ed.dataestructure.list.List;
 import org.uma.ed.dataestructure.utils.Equals;
 import org.uma.ed.dataestructure.utils.HashCode;
 import org.uma.ed.dataestructure.utils.ToString;
 
 /**
  * This class provides a skeletal implementation of equals, hashCode and toString methods to minimize the effort
- * required to implement these methods in concrete subclasses of the {@link List} interface.
+ * required to implement these methods in concrete subclasses of the Heap interface.
  *
- * @param <T> Type of elements in list.
+ * @param <T> Type of elements in heap.
  *
- * @author Pepe Gallardo, Data Structures, Grado en Informática. UMA.
+ * @author Joaquín Ballesteros, Data Structures, Grado en Informática. UMA.
  */
-public abstract class AbstractList<T> implements Iterable<T> {
+public abstract class AbstractHeap<T> implements Iterable<T> {
   /**
    * This abstract method should be implemented in concrete subclasses to provide the number of elements in the list.
    *
@@ -29,7 +30,7 @@ public abstract class AbstractList<T> implements Iterable<T> {
    */
   @Override
   public boolean equals(Object obj) {
-    return this == obj || obj instanceof AbstractList<?> list2 && size() == list2.size()
+    return this == obj || obj instanceof AbstractHeap<?> list2 && size() == list2.size()
         && Equals.orderDependent(this, list2);
   }
 
@@ -43,11 +44,4 @@ public abstract class AbstractList<T> implements Iterable<T> {
     return HashCode.orderDependent(this);
   }
 
-  /**
-   * Returns representation of this List as a String.
-   */
-  @Override
-  public String toString() {
-    return ToString.toString(this);
-  }
 }

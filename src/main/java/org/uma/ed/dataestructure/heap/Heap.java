@@ -1,8 +1,8 @@
-package org.uma.ed.datastructures.heap;
+package org.uma.ed.dataestructure.heap;
 
 import java.util.Comparator;
 
-import org.uma.ed.datastructures.heap.EmptyHeapException;
+import org.uma.ed.dataestructure.heap.EmptyHeapException;
 
 /**
  * This interface represents a Min Heap data structure. A Heap is a specialized tree-based data structure that satisfies
@@ -15,7 +15,7 @@ import org.uma.ed.datastructures.heap.EmptyHeapException;
  *
  * @author Pepe Gallardo, Data Structures, Grado en Informática. UMA.
  */
-public interface Heap<T> {
+public interface Heap<T> extends Iterable<T>{
   /**
    * Returns the comparator used by the heap to define the order of elements.
    *

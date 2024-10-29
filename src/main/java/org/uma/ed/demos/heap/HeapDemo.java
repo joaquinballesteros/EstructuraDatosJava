@@ -1,15 +1,12 @@
 package org.uma.ed.demos.heap;
 
 import java.util.Arrays;
+import java.util.Iterator;
 import java.util.Random;
-import org.uma.ed.datastructures.heap.BinaryHeap;
-import org.uma.ed.datastructures.heap.Heap;
-import org.uma.ed.datastructures.heap.MaxiphobicHeap;
-import org.uma.ed.datastructures.heap.PairingHeap;
-import org.uma.ed.datastructures.heap.SkewHeap;
-import org.uma.ed.datastructures.heap.WBLeftistHeap;
-import org.uma.ed.datastructures.list.ArrayList;
-import org.uma.ed.datastructures.list.List;
+import org.uma.ed.dataestructure.heap.BinaryHeap;
+import org.uma.ed.dataestructure.heap.Heap;
+import org.uma.ed.dataestructure.list.ArrayList;
+import org.uma.ed.dataestructure.list.List;
 
 /**
  * Simple demo program for testing that elements are extracted in increasing order from a heap.
@@ -17,41 +14,46 @@ import org.uma.ed.datastructures.list.List;
  * @author Pepe Gallardo, Data Structures, Grado en Informática. UMA.
  */
 public class HeapDemo {
-  private static void printHeapInOrder(Heap<Integer> heap) {
-    while (!heap.isEmpty()) {
-      System.out.print(heap.minimum()+ " ");
-      heap.deleteMinimum();
+  private static void printBFT(Heap<Integer> heap) {
+    Iterator<Integer> it = heap.iterator();
+    while (it.hasNext()) {
+      System.out.print(it.next()+ " ");
     }
     System.out.println();
   }
 
   public static void main(String[] args) {
-    List<Integer> list = ArrayList.of(10, 2, 13, 0, 5, 7, 10, 3, 1, 6);
+    List<Integer> list0 = ArrayList.of(10, 2, 13, 0, 5, 7, 10, 3, 1, 6);
+    List<Integer> list1 = ArrayList.of( 2, 10, 13,  7, 10, 3, 0, 5, 1, 6); //Igual que la anterior cambiadas.
+    List<Integer> list2 = ArrayList.of(  10, 13,  7, 10, 3, 0, 5, 1, 6);   //Falta un solo elemento.
 
-    Heap<Integer> heap1 = WBLeftistHeap.from(list);
+    //               0
+    //        1              7
+    //   2        5     13       10
+    // 3   10    6
+
+    System.out.println("Heap 0: --");
+    Heap<Integer> heap0 = BinaryHeap.from(list0);
+    System.out.println(heap0);
+    printBFT(heap0);
+    System.out.println("--------");
+
+    System.out.println("Heap 1: --");
+    Heap<Integer> heap1 = BinaryHeap.from(list1);
     System.out.println(heap1);
-    printHeapInOrder(heap1);
-    System.out.println();
+    printBFT(heap1);
+    System.out.println("--------");
 
-    Heap<Integer> heap2 = SkewHeap.from(list);
+    System.out.println("Heap 2: --");
+    Heap<Integer> heap2 = BinaryHeap.from(list2);
     System.out.println(heap2);
-    printHeapInOrder(heap2);
-    System.out.println();
+    printBFT(heap2);
+    System.out.println("--------");
 
-    Heap<Integer> heap3 = MaxiphobicHeap.from(list);
-    System.out.println(heap3);
-    printHeapInOrder(heap3);
-    System.out.println();
+    System.out.println("Elemento mínimo:" + heap0.minimum().toString());
+    System.out.println("Iguales heap0 y heap1 (podría ser cierto, o falso :)) "+heap0.equals(heap1));
+    System.out.println("Iguales heap0 y heap2 (debería ser falso) "+heap0.equals(heap2));
 
-    Heap<Integer> heap4 = PairingHeap.from(list);
-    System.out.println(heap4);
-    printHeapInOrder(heap4);
-    System.out.println();
-
-    Heap<Integer> heap5 = BinaryHeap.from(list);
-    System.out.println(heap5);
-    printHeapInOrder(heap5);
-    System.out.println();
 
     Integer[] array = {10, 2, 13, 0, 5, 7, 10, 3, 1, 6};
     Random rnd = new Random();

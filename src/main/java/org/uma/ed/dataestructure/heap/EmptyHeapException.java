@@ -1,4 +1,4 @@
-package org.uma.ed.datastructures.heap;
+package org.uma.ed.dataestructure.heap;
 
 /**
  * This class represents a custom exception that is thrown when non-valid operations are attempted on an empty heap.
