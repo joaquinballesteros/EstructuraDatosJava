@@ -1,14 +1,8 @@
 package org.uma.ed.dataestructure.heap;
 
-import org.uma.ed.dataestructure.list.ArrayList;
-import org.uma.ed.dataestructure.list.List;
-import org.uma.ed.dataestructure.queue.ArrayQueue;
-import org.uma.ed.dataestructure.queue.Queue;
-
 import java.util.Arrays;
 import java.util.Comparator;
-import java.util.Iterator;
-import java.util.NoSuchElementException;
+
 
 /**
  * BinaryHeap is a class that implements a min binary heap data structure.
@@ -20,7 +14,7 @@ import java.util.NoSuchElementException;
  *
  * @author Pepe Gallardo, Data Structures, Grado en Informática. UMA.
  */
-public class BinaryHeap<T> extends AbstractHeap<T> implements Heap<T> {
+public class BinaryHeap<T> implements Heap<T> {
   /*
    * INVARIANT:
    * - The array elements[0..size-1] represents a heap-ordered binary tree.
@@ -399,53 +393,6 @@ public class BinaryHeap<T> extends AbstractHeap<T> implements Heap<T> {
       sb.append(", ");
       toString(sb, rightChild(index));
       sb.append(")");
-    }
-  }
-
-  /**
-   * Returns an iterator over elements of type {@code T}.
-   *
-   * @return an Iterator.
-   */
-  @Override
-  public Iterator<T> iterator() {
-    return new HeapIterator();
-  }
-
-
-  /**
-   * This class implements an iterator over elements in this BinaryHeap.
-   * INVARIANT:
-   *  - `current` is a reference to the node containing the next element to be returned by next().
-   *  - It uses a BFT traversal, so if `queue` is empty, there are no more elements to be returned.
-   */
-  private final class HeapIterator implements Iterator<T> {
-    Queue<Integer> queue = new ArrayQueue<>();
-
-    public HeapIterator() {
-      if (size > 0) {
-        queue.enqueue(0);//Enqueue root
-      }
-    }
-
-    public boolean hasNext() {
-      return !queue.isEmpty();
-    }
-
-    public T next() {
-      if (!hasNext()) {
-        throw new NoSuchElementException();
-      }
-      Integer nodeIndex = queue.first();
-      queue.dequeue();
-      T res = elements[nodeIndex];
-      if (hasLeftChild(nodeIndex)) {
-        queue.enqueue(leftChild(nodeIndex));
-      }
-      if (hasRightChild(nodeIndex)) {
-        queue.enqueue(rightChild(nodeIndex));
-      }
-      return res;
     }
   }
 }

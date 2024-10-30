@@ -94,19 +94,6 @@ public class BinaryHeapTest {
         assertEquals(20, heap.size());
     }
 
-    @Test
-    public void testIterator() {
-        heap.insert(3);
-        heap.insert(1);
-        heap.insert(2);
-        Integer[] expected = { 1, 3, 2};
-        Integer[] actual = new Integer[3];
-        int i = 0;
-        for (Integer value : heap) {
-            actual[i++] = value;
-        }
-        assertArrayEquals(expected, actual);
-    }
 
     @Test
     public void testEmptyHeapException() {

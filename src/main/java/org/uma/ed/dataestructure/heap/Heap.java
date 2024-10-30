@@ -15,7 +15,7 @@ import org.uma.ed.dataestructure.heap.EmptyHeapException;
  *
  * @author Pepe Gallardo, Data Structures, Grado en Informática. UMA.
  */
-public interface Heap<T> extends Iterable<T>{
+public interface Heap<T>{
   /**
    * Returns the comparator used by the heap to define the order of elements.
    *

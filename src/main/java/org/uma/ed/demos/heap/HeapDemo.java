@@ -14,10 +14,10 @@ import org.uma.ed.dataestructure.list.List;
  * @author Pepe Gallardo, Data Structures, Grado en Informática. UMA.
  */
 public class HeapDemo {
-  private static void printBFT(Heap<Integer> heap) {
-    Iterator<Integer> it = heap.iterator();
-    while (it.hasNext()) {
-      System.out.print(it.next()+ " ");
+  private static void printHeapInOrder(Heap<Integer> heap) {
+    while (!heap.isEmpty()) {
+      System.out.print(heap.minimum()+ " ");
+      heap.deleteMinimum();
     }
     System.out.println();
   }
@@ -35,25 +35,20 @@ public class HeapDemo {
     System.out.println("Heap 0: --");
     Heap<Integer> heap0 = BinaryHeap.from(list0);
     System.out.println(heap0);
-    printBFT(heap0);
+    printHeapInOrder(heap0);
     System.out.println("--------");
 
     System.out.println("Heap 1: --");
     Heap<Integer> heap1 = BinaryHeap.from(list1);
     System.out.println(heap1);
-    printBFT(heap1);
+    printHeapInOrder(heap1);
     System.out.println("--------");
 
     System.out.println("Heap 2: --");
     Heap<Integer> heap2 = BinaryHeap.from(list2);
     System.out.println(heap2);
-    printBFT(heap2);
+    printHeapInOrder(heap2);
     System.out.println("--------");
-
-    System.out.println("Elemento mínimo:" + heap0.minimum().toString());
-    System.out.println("Iguales heap0 y heap1 (podría ser cierto, o falso :)) "+heap0.equals(heap1));
-    System.out.println("Iguales heap0 y heap2 (debería ser falso) "+heap0.equals(heap2));
-
 
     Integer[] array = {10, 2, 13, 0, 5, 7, 10, 3, 1, 6};
     Random rnd = new Random();
