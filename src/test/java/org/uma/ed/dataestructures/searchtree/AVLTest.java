@@ -16,8 +16,11 @@ public class AVLTest {
     @Test
     public void testInsertAndSearch() {
         bst.insert(5);
+        assertTrue(bst.isAVL());
         bst.insert(3);
+        assertTrue(bst.isAVL());
         bst.insert(7);
+        assertTrue(bst.isAVL());
 
         assertEquals(5, bst.search(5));
         assertEquals(3, bst.search(3));
@@ -35,10 +38,12 @@ public class AVLTest {
         assertNull(bst.search(3));
         assertEquals(5, bst.search(5));
         assertEquals(7, bst.search(7));
+        assertTrue(bst.isAVL());
 
         bst.delete(5);
         assertNull(bst.search(5));
         assertEquals(7, bst.search(7));
+        assertTrue(bst.isAVL());
     }
 
     @Test
@@ -46,7 +51,6 @@ public class AVLTest {
         bst.insert(5);
         bst.insert(3);
         bst.insert(7);
-
         assertEquals(3, bst.minimum());
     }
 
@@ -55,7 +59,6 @@ public class AVLTest {
         bst.insert(5);
         bst.insert(3);
         bst.insert(7);
-
         assertEquals(7, bst.maximum());
     }
 
@@ -65,6 +68,7 @@ public class AVLTest {
 
         bst.insert(5);
         assertFalse(bst.isEmpty());
+        assertTrue(bst.isAVL());
     }
 
     @Test
@@ -76,6 +80,7 @@ public class AVLTest {
 
         bst.insert(3);
         assertEquals(2, bst.size());
+        assertTrue(bst.isAVL());
     }
 
     @Test
@@ -141,6 +146,7 @@ public class AVLTest {
         bst.deleteMinimum();
         assertNull(bst.search(3));
         assertEquals(5, bst.minimum());
+        assertTrue(bst.isAVL());
     }
 
     @Test
@@ -152,5 +158,7 @@ public class AVLTest {
         bst.deleteMaximum();
         assertNull(bst.search(7));
         assertEquals(5, bst.maximum());
+        assertTrue(bst.isAVL());
     }
 }
+

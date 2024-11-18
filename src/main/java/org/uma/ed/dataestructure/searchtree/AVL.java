@@ -1,6 +1,7 @@
 package org.uma.ed.dataestructure.searchtree;
 
 import java.util.Comparator;
+import java.util.function.Predicate;
 
 
 /**
@@ -10,7 +11,7 @@ import java.util.Comparator;
  * @param <K> Type of keys.
  *
  * @author Pepe Gallardo (modified by Joaquín Ballesteros). Data Structures, Grado en Informática. UMA.
- * 
+ *
  */
 public class AVL<K> implements SearchTree<K> {
 
@@ -72,7 +73,33 @@ public class AVL<K> implements SearchTree<K> {
             }
             return balanced;
         }
+
+        static <K> boolean all(Predicate<K> p, Node<K> node) {
+            if (node == null) {
+                return true;
+            } else {
+                return (p.test(node.key) && all(p, node.left) && all(p, node.right));
+            }
+        }
+
+        // Returns true if tree rooted at node is an AVL tree
+        static <K> boolean isAVL(final Node<K> node, Comparator<K> comparator) {
+            if (node == null) {
+                return true;
+            } else {
+                return (Math.abs(balance(node)) <= 1)
+                        && all(k -> comparator.compare(k, node.key) < 0, node.left)
+                        && all(k -> comparator.compare(k, node.key) > 0, node.right)
+                        && isAVL(node.left, comparator) && isAVL(node.right, comparator);
+            }
+        }
     }
+
+    // made public for testing purposes
+    public boolean isAVL() {
+        return Node.isAVL(root, comparator);
+    }
+
 
     private final Comparator<K> comparator;
     private Node<K> root;
